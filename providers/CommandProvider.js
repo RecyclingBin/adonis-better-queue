@@ -1,6 +1,6 @@
 'use strict'
 
-const ServiceProvider = require('adonis-fold').ServiceProvider;
+const { ServiceProvider } = require.main.require('@adonisjs/fold')
 
 /**
  * Provider for injecting Ace commands into the app
@@ -10,16 +10,16 @@ const ServiceProvider = require('adonis-fold').ServiceProvider;
  */
 
 class CommandProvider extends ServiceProvider {
-	
+/*
 	constructor() {
 		super()
 		// define types of commands
-		// init: copy queue server boostrapper, sample configuration, and create default job path 
+		// init: copy queue server boostrapper, sample configuration, and create default job path
 		// generate: create a producer consumer job pair with name
 		// work: start queue listeners with optional number of instances
 		this._commands = ['Init', 'Generate', 'Work'];
-	}
-
+	}*/
+/*
 	* register() {
 		this._commands.forEach(command => {
 			this.app.bind(`Adonis/Commands/Queue:${command}`, app => {
@@ -27,8 +27,14 @@ class CommandProvider extends ServiceProvider {
 				return new Command(app.use('Adonis/Src/Helpers'), app.use('Adonis/Src/Config'));
 			});
 		});
-	}
-	
+	}*/
+  register () {
+    this.app.singleton('Bee/Queue', () => {
+      const Config = this.app.use('Adonis/Src/Config')
+      return new (require('.'))(Config)
+    })
+  }
+
 }
 
 module.exports = CommandProvider;

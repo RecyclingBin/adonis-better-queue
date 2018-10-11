@@ -6,10 +6,10 @@ const kue = require('kue-scheduler');
  * Main queue driver
  *
  * @version 1.0.0
- * @adonis-version 3.2
+ * @adonis-version 4.1
  */
 class Queue {
-	
+
 	/**
 	 * Construct the queue
 	 * @param  {Adonis/App} app Adonis app/Ioc instance
@@ -25,7 +25,7 @@ class Queue {
 		// boost number of event listeners a queue instance can listen to
 		this._queue.setMaxListeners(0);
 
-	}	
+	}
 
 	/**
 	 * Register job event handlers
@@ -110,7 +110,7 @@ class Queue {
 		});
 
 	}
-}	
+}
 
 
 module.exports = Queue;
