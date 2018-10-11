@@ -1,5 +1,5 @@
 {
-  "name": "adonis-queue-pro",
+  "name": "adonis-better-queue",
   "version": "1.0.0",
   "description": "An easy-to-use job queue for AdonisJS framework backed by Kue and Kue-scheduler",
   "main": "index.js",
